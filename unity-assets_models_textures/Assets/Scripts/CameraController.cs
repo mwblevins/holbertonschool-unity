@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
 
     private Vector3 offset;
     private bool isRotating;
+    public float minY = 0f;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class CameraController : MonoBehaviour
     {
         // Camera follow
         Vector3 targetPosition = player.position + offset;
+        targetPosition.y = Mathf.Max(targetPosition.y, minY);
         transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
 
         // Camera rotation
@@ -40,5 +42,6 @@ public class CameraController : MonoBehaviour
             Quaternion rotationDelta = Quaternion.Euler(eulerAngleDelta);
             transform.rotation *= rotationDelta;
         }
+
     }
 }

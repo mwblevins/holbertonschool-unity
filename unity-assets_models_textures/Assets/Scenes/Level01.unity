@@ -705,6 +705,7 @@ MonoBehaviour:
   player: {fileID: 1400517080}
   followSpeed: 5
   rotationSpeed: 2
+  minY: 0
 --- !u!1 &710235154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,6 +1947,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 5
+  startPosition: {fileID: 1104167903}
+  respawnHeight: -10
+  respawnOffset: 2
 --- !u!54 &1400517082
 Rigidbody:
   m_ObjectHideFlags: 0
