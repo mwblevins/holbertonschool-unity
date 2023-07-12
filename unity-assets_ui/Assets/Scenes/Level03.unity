@@ -161,31 +161,31 @@ Transform:
   - {fileID: 260414952}
   - {fileID: 1394115986}
   - {fileID: 100111205}
-  - {fileID: 1631890798}
   - {fileID: 345092558}
   - {fileID: 1098589057}
   - {fileID: 41079148}
+  - {fileID: 1631890798}
   - {fileID: 1031580875}
   - {fileID: 524695820}
   - {fileID: 603212265}
   - {fileID: 932790249}
   - {fileID: 1882395736}
-  - {fileID: 1394736096}
   - {fileID: 570723993}
-  - {fileID: 1001969398}
+  - {fileID: 1394736096}
   - {fileID: 655393836}
   - {fileID: 524143939}
+  - {fileID: 1001969398}
   - {fileID: 1556735611}
   - {fileID: 854624065}
   - {fileID: 1242602304}
   - {fileID: 903596340}
   - {fileID: 1498865724}
   - {fileID: 1266056672}
+  - {fileID: 1691472988}
   - {fileID: 281874579}
   - {fileID: 525062768}
-  - {fileID: 1691472988}
-  - {fileID: 1506273045}
   - {fileID: 1984899293}
+  - {fileID: 1506273045}
   - {fileID: 689056052}
   - {fileID: 1306530098}
   - {fileID: 1189014101}
@@ -7080,6 +7080,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8323677467826122534, guid: 792a77cc382cd45aca066a0a918437d8, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: c589641afd67d47abb1b5430ad33271a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 792a77cc382cd45aca066a0a918437d8, type: 3}
 --- !u!1001 &8385858103868150309
