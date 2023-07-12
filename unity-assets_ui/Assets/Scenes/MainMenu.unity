@@ -1145,6 +1145,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 655673576}
     m_Modifications:
+    - target: {fileID: 2174919556781905604, guid: 9b8cc03eb2ead4752ab50d1157ca3857, type: 3}
+      propertyPath: m_Name
+      value: ExitText
+      objectReference: {fileID: 0}
     - target: {fileID: 2174919557476927444, guid: 9b8cc03eb2ead4752ab50d1157ca3857, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1242,6 +1246,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 655673576}
     m_Modifications:
+    - target: {fileID: 2231613517888703820, guid: 55d456c5922484832a7249a904047138, type: 3}
+      propertyPath: m_Name
+      value: OptionsText
+      objectReference: {fileID: 0}
     - target: {fileID: 2231613518876470316, guid: 55d456c5922484832a7249a904047138, type: 3}
       propertyPath: m_Name
       value: OptionsButton
