@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -7,10 +5,11 @@ public class CameraController : MonoBehaviour
     public Transform player;
     public float followSpeed = 5f;
     public float rotationSpeed = 2f;
+    public bool isInverted = false;
+    public float minY = 0f;
 
     private Vector3 offset;
     private bool isRotating;
-    public float minY = 0f;
 
     private void Start()
     {
@@ -37,11 +36,10 @@ public class CameraController : MonoBehaviour
 
         if (isRotating)
         {
-            float mouseX = Input.GetAxis("Mouse X") * rotationSpeed;
-            Vector3 eulerAngleDelta = new Vector3(0f, mouseX, 0f);
+            float mouseY = Input.GetAxis("Mouse Y") * rotationSpeed * (isInverted ? -1 : 1);
+            Vector3 eulerAngleDelta = new Vector3(0f, 0f, mouseY);
             Quaternion rotationDelta = Quaternion.Euler(eulerAngleDelta);
             transform.rotation *= rotationDelta;
         }
-
     }
 }
