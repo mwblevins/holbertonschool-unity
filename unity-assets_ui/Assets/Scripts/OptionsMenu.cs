@@ -5,12 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class OptionsMenu : MonoBehaviour
 {
-    private int previousSceneIndex;
-
-    private void Start()
-    {
-        previousSceneIndex = SceneManager.GetActiveScene().buildIndex - 1;
-    }
+    public static int previousSceneIndex;
 
     public void Back()
     {

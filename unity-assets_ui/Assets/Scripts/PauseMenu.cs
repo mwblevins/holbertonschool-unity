@@ -48,6 +48,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Options()
     {
+        OptionsMenu.previousSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene("Options");
         Time.timeScale = 1f;
     }
