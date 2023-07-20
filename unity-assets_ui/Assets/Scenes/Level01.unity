@@ -1540,6 +1540,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347772526}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &361207423 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1441041867743119461, guid: 0f3b503d8c2b24929ba9733bd567df31, type: 3}
+  m_PrefabInstance: {fileID: 238146216}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &374787521 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b1508cbea535426a844e248deb9a01d, type: 3}
@@ -5334,7 +5345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winCanvas: {fileID: 1616476729}
-  finalTime: {fileID: 0}
+  finalTime: {fileID: 361207423}
   TimerText: {fileID: 1103706842}
 --- !u!1001 &1419199346
 PrefabInstance:

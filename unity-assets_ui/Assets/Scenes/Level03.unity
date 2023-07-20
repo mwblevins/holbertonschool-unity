@@ -5334,7 +5334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winCanvas: {fileID: 1616476729}
-  finalTime: {fileID: 0}
+  finalTime: {fileID: 1461245965}
   TimerText: {fileID: 1103706842}
 --- !u!1001 &1419199346
 PrefabInstance:
@@ -5405,6 +5405,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dde10d71ba3a947f488595db8f73f84b, type: 3}
+--- !u!114 &1461245965 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1441041867743119461, guid: 0f3b503d8c2b24929ba9733bd567df31, type: 3}
+  m_PrefabInstance: {fileID: 238146216}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1466873304
 PrefabInstance:
   m_ObjectHideFlags: 0
