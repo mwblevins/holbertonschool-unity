@@ -23,10 +23,11 @@ public class TimerTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (timerStarted)
+            if (timerStarted && timerScript != null) // Add a null check for timerScript
             {
                 timerScript.enabled = true;
             }
         }
     }
 }
+
