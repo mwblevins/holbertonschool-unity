@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 817006865682730232}
   - component: {fileID: 817006865682730233}
   - component: {fileID: 817006865682730237}
-  - component: {fileID: 482959090167440117}
+  - component: {fileID: 3406806610220853073}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -152,7 +152,7 @@ MonoBehaviour:
   startPosition: {fileID: 817006865682730234}
   respawnHeight: -10
   respawnOffset: 2
---- !u!95 &482959090167440117
+--- !u!95 &3406806610220853073
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
