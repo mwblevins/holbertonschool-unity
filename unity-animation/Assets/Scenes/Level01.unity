@@ -2724,9 +2724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ae95336c950494d93aed4252e9f72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCamera: {fileID: 653182064}
-  ySpeed: -0.01
-  xSpeed: 1
+  turnSpeed: 4
   isInverted: 0
 --- !u!45 &653182067
 Skybox:
@@ -5335,10 +5333,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ae95336c950494d93aed4252e9f72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCamera: {fileID: 653182064}
-  ySpeed: -0.01
-  xSpeed: 1
+  turnSpeed: 4
   isInverted: 0
+--- !u!95 &1400517088
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400517076}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c2a05c45c567842edb7f52b333b50c6d, type: 3}
+  m_Controller: {fileID: 9100000, guid: c1ece99c126234726b0a8ce3d4dc0460, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1419199346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7497,7 +7514,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 482959090167440117, guid: b351b06cff8514053bc468d5233a0fba, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b351b06cff8514053bc468d5233a0fba, type: 3}
 --- !u!1001 &8323677466806545779
 PrefabInstance:
