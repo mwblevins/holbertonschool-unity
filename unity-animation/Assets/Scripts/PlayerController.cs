@@ -12,8 +12,11 @@ public class PlayerController : MonoBehaviour
     public float respawnHeight = -10f;
     public float respawnOffset = 2f;
 
+    private Animator animator;
+
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -29,7 +32,17 @@ public class PlayerController : MonoBehaviour
         Vector3 movementDirection = transform.forward * verticalMovement;
         Vector3 movement = movementDirection * moveSpeed;
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
+        // Set up Bool for when character is moving
+        if (movementDirection != Vector3.zero)
+        {
+            animator.SetBool("IsMoving", true);
+        }
 
+        else
+        {
+            animator.SetBool("IsMoving", false);
+        }
+        // Jumping
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
