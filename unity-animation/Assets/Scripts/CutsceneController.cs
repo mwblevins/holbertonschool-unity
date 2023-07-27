@@ -25,6 +25,7 @@ public class CutsceneController : MonoBehaviour
         CutsceneCamera.SetActive(false);
         Player1.SetActive(true);
         Player1.GetComponent<PlayerController>().enabled = true;
+        Player1.GetComponent<CameraController>().enabled = true;
         MainCamera.SetActive(true);
         TimerCanvas.SetActive(true);
         TimerTrigger.SetActive(true);

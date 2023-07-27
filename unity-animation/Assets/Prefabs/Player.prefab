@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 817006865682730232}
   - component: {fileID: 817006865682730233}
   - component: {fileID: 817006865682730237}
+  - component: {fileID: 482959090167440117}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -146,10 +147,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  rotationSpeed: 100
   jumpForce: 5
   startPosition: {fileID: 817006865682730234}
   respawnHeight: -10
   respawnOffset: 2
+--- !u!95 &482959090167440117
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817006865682730230}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &817006864067670870
 PrefabInstance:
   m_ObjectHideFlags: 0

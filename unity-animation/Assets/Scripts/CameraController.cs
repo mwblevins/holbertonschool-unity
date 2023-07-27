@@ -1,45 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform player;
-    public float followSpeed = 5f;
-    public float rotationSpeed = 2f;
-    public bool isInverted = false;
-    public float minY = 0f;
-
     private Vector3 offset;
-    private bool isRotating;
+    private GameObject player;
+    public float turnSpeed = 4.0f;
 
-    private void Start()
+    // New variable to control if the camera should be inverted
+    public bool isInverted;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        offset = transform.position - player.position;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+        player = GameObject.Find("Player");
+        offset = transform.position - player.transform.position;
+
+         // Load the invert option
+        if (PlayerPrefs.HasKey("InvertYToggle"))
+        {
+            isInverted = PlayerPrefs.GetInt("InvertYToggle") == 1;
+        }
     }
 
-    private void Update()
+    // Update is called once per frame
+    void LateUpdate()
     {
-        // Camera follow
-        Vector3 targetPosition = player.position + offset;
-        targetPosition.y = Mathf.Max(targetPosition.y, minY);
-        transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+        // Use the isInverted bool to determine whether to invert the Mouse Y input
+        float mouseY = isInverted ? -Input.GetAxis("Mouse Y") : Input.GetAxis("Mouse Y");
 
-        // Camera rotation
-        if (Input.GetMouseButton(1))
-        {
-            isRotating = true;
-        }
+        offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * Quaternion.AngleAxis(mouseY * turnSpeed, Vector3.left) * offset;
+        transform.position = player.transform.position + offset;
+        transform.LookAt(player.transform.position);
+    }
 
-        if (Input.GetMouseButtonUp(1))
-        {
-            isRotating = false;
-        }
-
-        if (isRotating)
-        {
-            float mouseY = Input.GetAxis("Mouse Y") * rotationSpeed * (isInverted ? -1 : 1);
-            Vector3 eulerAngleDelta = new Vector3(0f, 0f, mouseY);
-            Quaternion rotationDelta = Quaternion.Euler(eulerAngleDelta);
-            transform.rotation *= rotationDelta;
-        }
+    public void UpdateInverted()
+    {
+        if (PlayerPrefs.HasKey("InvertYToggle"))
+            isInverted = PlayerPrefs.GetInt("InvertYToggle") == 1;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float rotationSpeed = 100f;
     public float jumpForce = 5f;
     private Rigidbody rb;
     public Transform startPosition;
@@ -18,10 +19,15 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        float horizontalMovement = Input.GetAxis("Horizontal");
+        float horizontalRotation = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(horizontalMovement, 0f, verticalMovement) * moveSpeed;
+        // Apply rotation based on 'A' and 'D' input
+        transform.Rotate(0f, horizontalRotation * rotationSpeed * Time.deltaTime, 0f);
+
+        // Calculate the movement direction based on the current rotation
+        Vector3 movementDirection = transform.forward * verticalMovement;
+        Vector3 movement = movementDirection * moveSpeed;
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
         if (Input.GetKeyDown(KeyCode.Space))
