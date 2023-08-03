@@ -11,6 +11,12 @@ public class PlayerController : MonoBehaviour
     public Transform startPosition;
     public float respawnHeight = -10f;
     public float respawnOffset = 2f;
+    private bool isFalling = false;
+    private bool isJumpingRecently = false;
+    private float jumpCooldown = 1.0f;
+    private float timeSinceLastJump = 0.0f;
+    private Quaternion originalRotation;
+    private bool isRespawning = false;
 
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
@@ -21,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        originalRotation = transform.rotation;
     }
 
     private void Update()
@@ -52,17 +59,62 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("IsJumping", false);
         }
-        //Respawn when falling off edge
-        if (transform.position.y < respawnHeight)
+        // Jumping
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() && !isJumpingRecently)
         {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            animator.SetBool("IsJumping", true);
+
+            isJumpingRecently = true;
+            timeSinceLastJump = 0.0f;
+        }
+        else
+        {
+            // If not jumping or still within the cooldown, reset the jumping state
+            if (timeSinceLastJump < jumpCooldown)
+            {
+                animator.SetBool("IsJumping", false);
+                timeSinceLastJump += Time.deltaTime;
+            }
+            else
+            {
+                isJumpingRecently = false;
+            }
+        }
+
+        // Falling
+        if (!IsGrounded() && !isFalling && !isJumpingRecently)
+        {
+            isFalling = true;
+            animator.SetBool("IsFalling", true);
+            Debug.Log("Falling");
+        }
+        else if ((IsGrounded() || isJumpingRecently) && isFalling)
+        {
+            isFalling = false;
+            animator.SetBool("IsFalling", false);
+            Debug.Log("Landed");
+        }
+        // Respawn
+        if (transform.position.y < respawnHeight && !isRespawning)
+        {
+            isRespawning = true;
             rb.velocity = Vector3.zero;
             rb.useGravity = false;
             transform.position = startPosition.position + Vector3.up * respawnOffset;
             rb.useGravity = true;
+
+            // Reset the rotation to the original upright orientation
+            transform.rotation = originalRotation;
+
+            // Reset animator parameters
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("IsFalling", false);
+
         }
-    }
     bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, .2f, ground);
     }
+}
 }
