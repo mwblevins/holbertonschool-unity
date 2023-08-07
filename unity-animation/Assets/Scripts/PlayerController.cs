@@ -110,6 +110,9 @@ public class PlayerController : MonoBehaviour
             // Reset animator parameters
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsFalling", false);
+            animator.SetBool("FallingFlat", true);
+            animator.SetBool("GettingUp", true);
+            animator.SetBool("BackToIdle", true);
 
         }
     bool IsGrounded()
