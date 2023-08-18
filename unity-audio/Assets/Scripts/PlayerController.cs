@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,15 @@ public class PlayerController : MonoBehaviour
     private Quaternion originalRotation;
     private bool isRespawning = false;
 
+    public AudioClip GrassRun;
+    public AudioClip StoneRun;
+    [SerializeField]
+    private AudioSource runningsoundsSFXAudioSource;
+    public AudioClip FlatGrass;
+    public AudioClip FlatStone;
+    private AudioSource fallingFlatSFX;
+
+
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
 
@@ -28,6 +38,12 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         originalRotation = transform.rotation;
+        runningsoundsSFXAudioSource = GameObject.Find("RunningSounds").GetComponent<AudioSource>();
+        runningsoundsSFXAudioSource.loop = true;
+        fallingFlatSFX = GameObject.Find("FallingFlatSounds").GetComponent<AudioSource>();
+        
+
+        
     }
 
     private void Update()
@@ -44,16 +60,25 @@ public class PlayerController : MonoBehaviour
         if (movementDirection != Vector3.zero && IsGrounded())
         {
             animator.SetBool("IsMoving", true);
+            if (!runningsoundsSFXAudioSource.isPlaying)
+            {
+                PlaySound();
+            }
         }
         else
         {
             animator.SetBool("IsMoving", false);
+            if (runningsoundsSFXAudioSource.isPlaying)
+            {
+                runningsoundsSFXAudioSource.Stop();
+            }
         }
         // Jumping
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             animator.SetBool("IsJumping", true);
+            runningsoundsSFXAudioSource.Stop();
         }
         else
         {
@@ -109,13 +134,74 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsFalling", false);
             animator.SetBool("FallingFlat", true);
-            animator.SetBool("GettingUp", true);
-            animator.SetBool("BackToIdle", true);
+            Splat();
+            FlatSounds();
+            ///animator.SetBool("GettingUp", true);
+            ///animator.SetBool("BackToIdle", true);
 
         }
-    bool IsGrounded()
-    {
-        return Physics.CheckSphere(groundCheck.position, .15f, ground);
+
+        bool IsGrounded()
+        {
+            return Physics.CheckSphere(groundCheck.position, .15f, ground);
+        }
+        
     }
-}
+
+    private void Splat()
+    {
+            animator.SetBool("GettingUp", true);
+            animator.SetBool("BackToIdle", true);
+    }
+
+    private void PlaySound()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, ground))
+        {
+            Debug.Log(hit.collider.gameObject.name + "!");
+            string material = hit.collider.gameObject.tag;
+
+            if (material != null)
+            {
+                Debug.Log("Player is standing on material: " + material);
+            }
+
+            if (hit.collider.gameObject.CompareTag("Rock"))
+            {
+                Debug.Log("Stoned");
+                runningsoundsSFXAudioSource.clip = StoneRun;
+                runningsoundsSFXAudioSource.Play();
+            }
+            else
+            {
+                Debug.Log("Grass");
+                runningsoundsSFXAudioSource.clip = GrassRun;
+                runningsoundsSFXAudioSource.Play();
+            }
+        
+        }
+    }
+    private void FlatSounds()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, ground))
+        {
+            string material = hit.collider.gameObject.tag;
+
+            if (material != null)
+            {
+                Debug.Log("Player is splatted all over: " + material);
+            }
+
+            if (hit.collider.gameObject.CompareTag("Rock"))
+            {
+                fallingFlatSFX.clip = FlatStone;
+                fallingFlatSFX.Play();
+            }
+            else
+            {
+                fallingFlatSFX.clip = FlatGrass;
+                fallingFlatSFX.Play();
+            }
+        }
+    }
 }

@@ -15,6 +15,12 @@ public class WinTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
+            BackgroundMusicController bgmController = GameObject.Find("BackgroundMusic").GetComponent<BackgroundMusicController>();
+            bgmController.StopMusic();
+
+        }
         Timer otherTimer = other.GetComponent<Timer>();
         if (otherTimer != null)
         {

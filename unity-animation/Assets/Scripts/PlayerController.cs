@@ -96,17 +96,15 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Landed");
         }
         // Respawn
-        if (transform.position.y < respawnHeight && !isRespawning)
+        if (transform.position.y < respawnHeight /*&& !isRespawning*/)
         {
-            isRespawning = true;
+            //isRespawning = true;
             rb.velocity = Vector3.zero;
             rb.useGravity = false;
             transform.position = startPosition.position + Vector3.up * respawnOffset;
             rb.useGravity = true;
-
             // Reset the rotation to the original upright orientation
             transform.rotation = originalRotation;
-
             // Reset animator parameters
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsFalling", false);

@@ -14,12 +14,6 @@ public class Timer : MonoBehaviour
         elapsedTime = 0f;
     }
 
-    public void OnDisable()
-    {
-        TimerText.color = Color.green;
-        TimerText.fontSize = 80;
-    }
-
     private void Update()
     {
         elapsedTime += Time.deltaTime;
