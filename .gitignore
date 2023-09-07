@@ -71,3 +71,8 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 **/[Aa]ssets/[Ss]treamingAssets/aa.meta
 **/[Aa]ssets/[Ss]treamingAssets/aa/*
+unity_ar_business_card/Assets/Editor/Migration.meta
+unity_ar_business_card/Assets/Editor/Migration/AddVuforiaEnginePackage.cs
+unity_ar_business_card/Assets/Editor/Migration/AddVuforiaEnginePackage.cs.met
+**/Assets/TextMesh Pro/*
+**/com.ptc.vuforia.engine-10.17.4.tgz
