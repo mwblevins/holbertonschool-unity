@@ -3,7 +3,7 @@ using UnityEngine;
 public class TargetBehavior : MonoBehaviour
 {
     public float minScale = 0.2f;
-    public float maxScale = .25f;
+    public float maxScale = .5f;
     public float movementSpeed = 1.0f;
     public bool moveInXDirection = true;
     public bool moveInZDirection = true;

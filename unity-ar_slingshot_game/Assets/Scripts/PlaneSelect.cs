@@ -7,9 +7,11 @@ public class PlaneSelect : MonoBehaviour
     public ARPlaneManager planeManager;
     public GameObject targetPrefab;
     public int numberOfTargets = 5;
+    public Canvas startCanvas;
 
-    public StartButtonController startButtonController;
     private bool planeSelectionDone = false;
+    public StartButtonController startButtonController;
+    public AmmoController ammoController;
 
     void Update()
     {
@@ -43,20 +45,21 @@ public class PlaneSelect : MonoBehaviour
                         Vector3 randomPosition = GetRandomPositionOnPlane(plane);
                         Instantiate(targetPrefab, randomPosition, Quaternion.identity);
                     }
+                    ammoController.ShowAmmo();
                 }
             }
         }
     }
 
     private Vector3 GetRandomPositionOnPlane(ARPlane plane)
-{
-    Vector3 planeCenter = plane.transform.position;
-    Vector3 planeExtents = new Vector3(plane.size.x / 2, 0, plane.size.y / 2);
+    {
+        Vector3 planeCenter = plane.transform.position;
+        Vector3 planeExtents = new Vector3(plane.size.x / 2, 0, plane.size.y / 2);
 
-    float randomX = Random.Range(-planeExtents.x, planeExtents.x);
-    float randomZ = Random.Range(-planeExtents.z, planeExtents.z);
-    float yPosition = planeCenter.y;
+        float randomX = Random.Range(-planeExtents.x, planeExtents.x);
+        float randomZ = Random.Range(-planeExtents.z, planeExtents.z);
+        float yPosition = planeCenter.y;
 
-    return new Vector3(randomX + planeCenter.x, yPosition, randomZ + planeCenter.z);
-}
+        return new Vector3(randomX + planeCenter.x, yPosition, randomZ + planeCenter.z);
+    }
 }
