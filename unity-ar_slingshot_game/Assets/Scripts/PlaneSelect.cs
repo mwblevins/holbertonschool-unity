@@ -52,7 +52,6 @@ public class PlaneSelect : MonoBehaviour
         Vector3 planeCenter = plane.transform.position;
         Vector3 planeExtents = new Vector3((plane.size.x / 2) - margin, 0, (plane.size.y / 2) - margin);
 
-        // Ensure that padding does not exceed the adjusted extents
         padding = Mathf.Min(padding, planeExtents.x, planeExtents.z);
 
         float randomX = Random.Range(-planeExtents.x + padding, planeExtents.x - padding);
